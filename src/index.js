@@ -25,14 +25,16 @@ if (!JWT_SECRET) {
 }
 
 const server = Hapi.server({
-    port: process.env.PORT || 4000,
-    host: '0.0.0.0',
+  port: process.env.PORT || 4000,
+  host: '0.0.0.0', 
   routes: {
     cors: {
-      origin: ['http://localhost:5173'], 
+      origin: ['https://placemark-pag3y.netlify.app'],
       credentials: true,
-    },
-  },
+      headers: ['Accept', 'Content-Type', 'Authorization'], 
+      additionalHeaders: ['authorization'] 
+    }
+  }
 });
 
 server.app.db = db;
