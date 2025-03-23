@@ -24,11 +24,9 @@ if (!JWT_SECRET) {
   throw new Error('❌ JWT_SECRET is missing in .env file');
 }
 
-
-
 const server = Hapi.server({
-  port: 4000,
-  host: 'localhost',
+    port: process.env.PORT || 4000,
+    host: '0.0.0.0',
   routes: {
     cors: {
       origin: ['http://localhost:5173'], 
