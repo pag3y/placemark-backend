@@ -1,0 +1,135 @@
+
+openapi: 3.1.0
+info:
+  title: Historical Placemark API
+  version: 1.0.0
+paths:
+  /api/users/signup:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Success
+  /api/users/login:
+    post:
+      summary: Login user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Success
+  /api/users/{id}:
+    delete:
+      summary: Delete a user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+  /api/placemarks:
+    get:
+      summary: Get all placemarks
+      responses:
+        '200':
+          description: Success
+    post:
+      summary: Create a new placemark
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                category:
+                  type: string
+                lat:
+                  type: number
+                lng:
+                  type: number
+                imageUrl:
+                  type: string
+      responses:
+        '201':
+          description: Created
+  /api/placemarks/{id}:
+    get:
+      summary: Get a single placemark
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+    put:
+      summary: Update a placemark
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                category:
+                  type: string
+                lat:
+                  type: number
+                lng:
+                  type: number
+                imageUrl:
+                  type: string
+      responses:
+        '200':
+          description: Updated
+    delete:
+      summary: Delete a placemark
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
